@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HDI Predictor - A Comprehensive Measure of Well-Being</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🌍 Human Development Index Predictor</h1>
+    <p class="subtitle">A Comprehensive Measure of Well-Being</p>
+
+    {% if error %}
+      <div class="error-box">⚠ Error: {{ error }}</div>
+    {% endif %}
+
+    <form action="/predict" method="POST" class="form-card">
+      <div class="form-group">
+        <label for="life_expectancy">Life Expectancy at Birth (years)</label>
+        <input type="number" step="0.01" min="20" max="90" id="life_expectancy"
+               name="life_expectancy" placeholder="e.g. 72.5" required>
+      </div>
+
+      <div class="form-group">
+        <label for="mean_schooling">Mean Years of Schooling</label>
+        <input type="number" step="0.01" min="0" max="20" id="mean_schooling"
+               name="mean_schooling" placeholder="e.g. 8.2" required>
+      </div>
+
+      <div class="form-group">
+        <label for="expected_schooling">Expected Years of Schooling</label>
+        <input type="number" step="0.01" min="0" max="22" id="expected_schooling"
+               name="expected_schooling" placeholder="e.g. 13.5" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gni_per_capita">GNI per Capita (PPP $)</label>
+        <input type="number" step="0.01" min="100" max="150000" id="gni_per_capita"
+               name="gni_per_capita" placeholder="e.g. 15000" required>
+      </div>
+
+      <button type="submit" class="btn-predict">Predict HDI Category</button>
+    </form>
+
+    <div class="info-box">
+      <h3>Quick Reference (Scenarios)</h3>
+      <ul>
+        <li><b>Very High:</b> High life expectancy, strong schooling, high GNI</li>
+        <li><b>Medium:</b> Moderate values across all indicators</li>
+        <li><b>Low:</b> Low life expectancy, limited education, low GNI</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

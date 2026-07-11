@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result - HDI Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Prediction Result</h1>
+
+    <div class="result-card category-{{ prediction | replace(' ', '') }}">
+      <p class="result-label">Predicted HDI Category</p>
+      <h2 class="result-value">{{ prediction }}</h2>
+      <p class="confidence">Confidence: {{ confidence }}%</p>
+    </div>
+
+    <div class="input-summary">
+      <h3>Your Input Values</h3>
+      <table>
+        <tr><td>Life Expectancy</td><td>{{ life_expectancy }} years</td></tr>
+        <tr><td>Mean Years of Schooling</td><td>{{ mean_schooling }} years</td></tr>
+        <tr><td>Expected Years of Schooling</td><td>{{ expected_schooling }} years</td></tr>
+        <tr><td>GNI per Capita</td><td>${{ gni_per_capita }}</td></tr>
+      </table>
+    </div>
+
+    <a href="/" class="btn-back">← Try Another Prediction</a>
+  </div>
+</body>
+</html>
